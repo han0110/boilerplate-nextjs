@@ -14,5 +14,8 @@ build
 flow-typed/npm/*
 !flow-typed/npm/module_vx.x.x.js
 
+# vscode
+.vscode
+
 # yarn
 yarn-error.log
