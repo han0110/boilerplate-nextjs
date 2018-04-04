@@ -1,0 +1,18 @@
+# Dependency directory
+node_modules
+
+# OSX
+.DS_Store
+
+# App packaged
+build
+
+# Compiled binary addons
+.eslintcache
+
+# flow-typed
+flow-typed/npm/*
+!flow-typed/npm/module_vx.x.x.js
+
+# yarn
+yarn-error.log
