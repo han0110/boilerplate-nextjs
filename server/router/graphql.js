@@ -5,6 +5,5 @@ const { graphqlKoa } = require('apollo-server-koa');
 const router = new KoaRouter();
 
 router.post('/graphql', KoaBody(), graphqlKoa({ schema: '' }));
-router.get('/graphql', graphqlKoa({ schema: '' }));
 
 module.exports = router;

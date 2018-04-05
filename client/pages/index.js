@@ -1,18 +1,12 @@
 // @flow
 
-import React, { Component } from 'react';
+import withData from '../apollo/withData';
 import Hello from '../components/Hello';
 
 import '../styles/style.scss';
 
-class Index extends Component<{}> {
-  render() {
-    return (
-      <div>
-        <Hello />
-      </div>
-    );
-  }
-}
+const Index = withData(() => (
+  <Hello />
+));
 
 export default Index;

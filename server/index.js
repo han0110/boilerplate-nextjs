@@ -7,7 +7,7 @@ const graphql = require('./router/graphql');
 
 const app = new Koa();
 
-const main = async () => {
+const bootstrap = async () => {
   await n.prepare();
 
   app.use(async (ctx, next) => {
@@ -15,11 +15,11 @@ const main = async () => {
     await next();
   });
 
-  app.use(render.routes()).use(render.allowedMethods());
+  app.use(render.routes());
   app.use(graphql.routes()).use(graphql.allowedMethods());
 
   // eslint-disable-next-line no-console
   app.listen(3000, () => console.log('Koa running on port 3000'));
 };
 
-main();
+bootstrap();
