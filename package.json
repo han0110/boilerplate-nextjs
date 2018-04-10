@@ -3,12 +3,13 @@
   "version": "1.0.0",
   "description": "nextjs boilerplate",
   "scripts": {
-    "dev": "node server",
-    "build": "next build client",
+    "dev": "NODE_ENV=development node server",
     "start": "NODE_ENV=production node server",
+    "build": "next build client",
     "lint:js": "eslint --cache --format=node_modules/eslint-formatter-pretty . && flow .",
     "lint:css": "stylelint src/styles/*.scss --syntax scss",
     "flow-typed": "rimraf flow-typed/npm && flow-typed install --overwrite || true",
+    "test": "NODE_ENV=test jest",
     "clean": "rimraf build && rimraf flow-typed"
   },
   "repository": {
@@ -18,21 +19,27 @@
   "author": "Jason Jian",
   "license": "MIT",
   "dependencies": {
+    "@zeit/next-sass": "^0.1.2",
     "apollo-boost": "^0.1.4",
     "apollo-server-koa": "^1.3.4",
+    "dotenv": "^5.0.1",
     "graphql": "^0.13.2",
+    "graphql-sequelize": "^8.0.0",
     "isomorphic-unfetch": "^2.0.0",
     "koa": "^2.5.0",
     "koa-bodyparser": "^4.2.0",
     "koa-router": "^7.4.0",
     "next": "^5.1.0",
+    "pg": "^7.4.1",
+    "pg-hstore": "^2.3.2",
     "react": "^16.3.0",
     "react-apollo": "^2.1.2",
-    "react-dom": "^16.3.0"
+    "react-dom": "^16.3.0",
+    "sequelize": "^4.37.6"
   },
   "devDependencies": {
-    "@zeit/next-sass": "^0.1.2",
     "babel-eslint": "^8.2.2",
+    "babel-jest": "^22.4.3",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "eslint": "^4.19.1",
@@ -45,7 +52,9 @@
     "file-loader": "^1.1.11",
     "flow-bin": "^0.69.0",
     "flow-typed": "^2.4.0",
+    "jest": "^22.4.3",
     "node-sass": "^4.8.3",
+    "regenerator-runtime": "^0.11.1",
     "rimraf": "^2.6.2",
     "stylelint": "^9.2.0",
     "url-loader": "^1.0.1"

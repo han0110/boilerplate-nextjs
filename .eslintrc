@@ -10,7 +10,8 @@
   "env": {
     "browser": true,
     "es6": true,
-    "node": true
+    "node": true,
+    "jest": true
   },
   "plugins": [
     "flowtype",
@@ -19,6 +20,7 @@
     "import"
   ],
   "rules": {
+    "no-console": ["warn", { "allow": ["warn", "error"] }],
     "react/react-in-jsx-scope": "off",
     "react/sort-comp": [
       "error",
