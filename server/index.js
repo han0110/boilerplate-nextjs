@@ -1,6 +1,6 @@
 const Koa = require('koa');
 
-const { n } = require('./next');
+const n = require('./next');
 
 const render = require('./router/render');
 const graphql = require('./router/graphql');

@@ -6,12 +6,12 @@ module.exports = (sequelize, DataTypes) => {
     },
   });
 
-  Project.associate = (models) => {
-    models.Project.belongsToMany(
-      models.User,
-      { through: 'UserProjects' },
-    );
-  };
+  // Project.associate = (models) => {
+  //   models.Project.belongsToMany(
+  //     models.User,
+  //     { through: 'UserProjects' },
+  //   );
+  // };
 
   return Project;
 };

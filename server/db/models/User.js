@@ -10,12 +10,5 @@ module.exports = (sequelize, DataTypes) => {
     },
   });
 
-  User.associate = (models) => {
-    models.User.belongsToMany(
-      models.Project,
-      { through: 'UserProjects' },
-    );
-  };
-
   return User;
 };

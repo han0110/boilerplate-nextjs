@@ -1,8 +1,10 @@
 const KoaRouter = require('koa-router');
 
-const { handle } = require('../next');
+const n = require('../next');
+const routes = require('./routes');
 
 const router = new KoaRouter();
+const handle = routes.getRequestHandler(n);
 
 router.get('*', async (ctx) => {
   await handle(ctx.req, ctx.res);

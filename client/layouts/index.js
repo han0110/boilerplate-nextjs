@@ -1,24 +1,31 @@
 // @flow
 
-import Document, { Head, Main, NextScript } from 'next/document';
+import React from 'react';
+import type { Node } from 'react';
+import { withRouter } from 'next/router';
 
-class Layout extends Document {
-  render() {
-    return (
-      <html lang="en">
-        <Head>
-          <meta charSet="UTF-8" />
-          <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
-          <title>nextjs boilerplate</title>
-          <link rel="stylesheet" href="/_next/static/style.css" />
-        </Head>
-        <body>
-          <Main />
-          <NextScript />
-        </body>
-      </html>
-    );
+import Navbar from '../components/Navbar';
+import '../styles/style.scss';
+
+type Props = {
+  children: Node,
+  router: {
+    asPath: string,
+    pathname: string,
+    query: Object,
   }
-}
+};
 
-export default Layout;
+const Layout = ({ children, router }: Props) => {
+  const childrenWithProps = React.Children.map(children, child =>
+    React.cloneElement(child, { router }));
+
+  return (
+    <div className="layout__wrapper">
+      <Navbar router={router} />
+      <div className="layout__children">{childrenWithProps}</div>
+    </div>
+  );
+};
+
+export default withRouter(Layout);

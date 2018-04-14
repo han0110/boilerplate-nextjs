@@ -2,6 +2,8 @@ const db = require('../index');
 
 describe('model/user', async () => {
   beforeAll(async () => {
+    await db.sequelize.sync();
+    await db.User.create({ name: 'test', userId: 'test' });
     await db.User.destroy({ truncate: true });
   });
 
