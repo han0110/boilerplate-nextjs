@@ -1,7 +1,7 @@
 const KoaRouter = require('koa-router');
 
 const n = require('../next');
-const routes = require('./routes');
+const routes = require('../../shared/routes');
 
 const router = new KoaRouter();
 const handle = routes.getRequestHandler(n);

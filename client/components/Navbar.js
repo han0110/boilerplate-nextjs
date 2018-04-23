@@ -1,7 +1,7 @@
 // @flow
 /* eslint-disable jsx-a11y/anchor-is-valid */
 
-import { Link } from '../../server/router/routes';
+import { Link } from '../../shared/routes';
 
 type Props = {
   router: {
