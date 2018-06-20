@@ -13,7 +13,6 @@
   flex: 1 0 auto;
   display: flex;
   align-items: center;
-  font-size: 1.3rem;
 }
 
 .navbar__link {
@@ -27,5 +26,13 @@
   &[data-active="true"] {
     font-weight: bold;
     color: rgba($color: #000, $alpha: 1);
+  }
+
+  &:hover {
+    color: rgba($color: #000, $alpha: 0.7);
+  }
+
+  &:active {
+    color: rgba($color: #000, $alpha: 0.9);
   }
 }

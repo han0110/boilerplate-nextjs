@@ -1,4 +1,5 @@
 // @flow
+
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 
@@ -8,10 +9,10 @@ type Props = {
   }
 };
 
-const About = ({ author }: Props) => (
-  <div className="about__wrapper">
+const Intro = ({ author }: Props) => (
+  <h2>
     This boilerplate is created by {author.name}
-  </div>
+  </h2>
 );
 
 const users = gql`
@@ -24,4 +25,4 @@ const users = gql`
 
 export default graphql(users, {
   props: ({ data }) => ({ author: data.users[0] }),
-})(About);
+})(Intro);

@@ -18,17 +18,19 @@ const Navbar = ({ router: { pathname } }: Props) => {
 
   return (
     <div className="navbar__wrapper">
-      <div className="navbar__links">
+      <nav className="navbar__links">
         {
           links.map(({ id, route, prefetch }) => (
             <Link route={route} key={id} prefetch={prefetch} >
               <a className="navbar__link" data-active={route === pathname}>
-                {id}
+                <h3>
+                  {id}
+                </h3>
               </a>
             </Link>
           ))
         }
-      </div>
+      </nav>
     </div>
   );
 };

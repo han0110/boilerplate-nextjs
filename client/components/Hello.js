@@ -1,9 +1,9 @@
 // @flow
 
 const Hello = () => (
-  <div className="hello__wrapper">
+  <h1>
     NEXT.js
-  </div>
+  </h1>
 );
 
 export default Hello;

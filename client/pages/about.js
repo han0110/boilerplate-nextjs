@@ -1,14 +1,12 @@
 // @flow
 
-import withData from '../apollo/withData';
 import Layout from '../layouts';
-import About from '../components/About';
+import Intro from '../components/Intro';
 
-
-const Index = withData(() => (
+const About = () => (
   <Layout>
-    <About />
+    <Intro />
   </Layout>
-));
+);
 
-export default Index;
+export default About;

@@ -5,6 +5,7 @@ import type { Node } from 'react';
 import { withRouter } from 'next/router';
 
 import Navbar from '../components/Navbar';
+
 import '../styles/style.scss';
 
 type Props = {

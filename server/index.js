@@ -15,8 +15,8 @@ const bootstrap = async () => {
     await next();
   });
 
-  app.use(render.routes());
   app.use(graphql.routes()).use(graphql.allowedMethods());
+  app.use(render.routes());
 
   // eslint-disable-next-line no-console
   app.listen(3000, () => console.log('Koa running on port 3000'));

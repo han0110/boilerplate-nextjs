@@ -2,7 +2,7 @@
 
 import Document, { Head, Main, NextScript } from 'next/document';
 
-class Layout extends Document {
+class MyDocument extends Document {
   render() {
     return (
       <html lang="en">
@@ -21,4 +21,4 @@ class Layout extends Document {
   }
 }
 
-export default Layout;
+export default MyDocument;
