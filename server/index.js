@@ -1,25 +1,32 @@
-const Koa = require('koa');
+require('dotenv').config()
+const Koa = require('koa')
+const bodyParser = require('koa-bodyparser')
 
-const n = require('./next');
+const n = require('./next')
+const db = require('../db')
 
-const render = require('./router/render');
-const graphql = require('./router/graphql');
+const logger = require('./middlewares/logger')
+const router = require('./routes')
 
-const app = new Koa();
+const config = require('./config')
+
+const app = new Koa()
+
+db.attach(app)
 
 const bootstrap = async () => {
-  await n.prepare();
+  await n.prepare()
+  await db.prepare()
 
-  app.use(async (ctx, next) => {
-    ctx.res.statusCode = 200;
-    await next();
-  });
+  app.use(logger())
+  app.use(bodyParser())
+  app.use(router.routes())
 
-  app.use(graphql.routes()).use(graphql.allowedMethods());
-  app.use(render.routes());
+  app.listen(config.port, () =>
+    // eslint-disable-next-line no-console
+    console.log(`Koa running on port ${config.port}`),
+  )
+}
 
-  // eslint-disable-next-line no-console
-  app.listen(3000, () => console.log('Koa running on port 3000'));
-};
-
-bootstrap();
+// eslint-disable-next-line no-console
+bootstrap().catch(console.error)

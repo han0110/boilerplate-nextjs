@@ -1,19 +1,11 @@
-const withSass = require('@zeit/next-sass');
+const withSass = require('@zeit/next-sass')
+const withImages = require('next-images')
+const withFont = require('next-fonts')
 
-module.exports = withSass({
-  distDir: '../build',
-  webpack: (config) => {
-    config.module.rules.push({
-      test: /\.otf/,
-      exclude: /node_modules/,
-      loader: 'url-loader',
-      options: {
-        publicPath: '/_next/',
-        mimetype: 'application/octet-stream',
-        name: 'static/fonts/[hash].[ext]',
-        limit: 10000,
-      },
-    });
-    return config;
-  },
-});
+module.exports = withSass(
+  withImages(
+    withFont({
+      distDir: '../build',
+    }),
+  ),
+)

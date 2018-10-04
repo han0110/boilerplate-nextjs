@@ -1,4 +1,4 @@
-.layout__wrapper {
+#layout {
   width: 100vw;
   min-height: 100vh;
   display: flex;
@@ -7,7 +7,7 @@
   background-color: #f0f0f0;
 }
 
-.layout__children {
+#layout__children {
   width: 100%;
   flex-grow: 1;
   display: flex;

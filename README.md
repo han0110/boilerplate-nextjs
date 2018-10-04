@@ -30,7 +30,7 @@ yarn
 or using npm
 
 ```
-npm install
+npm i
 ```
 
 ### 1.3 Developing
@@ -59,25 +59,11 @@ Then server will start at port 3000
 
 ### 2.1 style linting
 
-- Build flow-typed node-modules
-
 ```
-yarn flow-typed
-```
-
-- js
-
-```
-yarn lint:js
-```
-
-- css
-
-```
-yarn lint:css
+yarn lint
 ```
 
 ## 3. Built With
 
-* [Next](https://zeit.co/blog/next5) - Framework for server-rendered React applications
+* [Next](https://github.com/zeit/next.js) - Framework for server-rendered React app
 * [Koa](http://koajs.com) - Framework for backend

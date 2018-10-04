@@ -1,5 +1,21 @@
-@import 'variable';
+// Configuration
+// -------------------------
+@import 'reset';
 @import 'config';
+
+// Vendor
+// -------------------------
+@import '../../node_modules/mappy-breakpoints/mappy-breakpoints';
+
+// Base
+// -------------------------
 @import 'base/index';
-@import 'components/index';
+
+// Mixins
+// -------------------------
+@import 'mixins/index';
+
+// Components
+// -------------------------
 @import 'layouts/index';
+@import 'components/index';
