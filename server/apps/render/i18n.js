@@ -7,7 +7,7 @@ i18n.prepare = async () => {
   await i18n
     .use(Backend)
     .init({
-      backend: { loadPath: `${config.path.server}/locales/{{lng}}/{{ns}}.json` },
+      backend: { loadPath: `${config.path.client}/assets/locales/{{lng}}/{{ns}}.json` },
       preload: ['en', 'zh'],
       ...config.i18n,
     })

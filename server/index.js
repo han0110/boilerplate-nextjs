@@ -21,7 +21,7 @@ const bootstrap = async () => {
   await api.prepare()
 
   app.use(logger())
-  app.use(mount('/locales', serve(`${config.path.server}/locales`)))
+  app.use(mount('/locales', serve(`${config.path.client}/assets/locales`)))
   app.use(mount('/api', api))
   app.use(mount(render))
 
