@@ -18,5 +18,6 @@ module.exports = {
   rules: {
     semi: ['error', 'never'],
     'prefer-destructuring': 0,
+    'jsx-a11y/anchor-is-valid': 0,
   },
 }

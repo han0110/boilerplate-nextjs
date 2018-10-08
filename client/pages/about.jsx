@@ -3,16 +3,15 @@ import PropTypes from 'prop-types'
 
 import withI18next from '../hoc/withI18next'
 import Layout from '../layouts'
-import Hello from '../components/Hello'
 
-const Index = ({ t }) => (
+const About = ({ t }) => (
   <Layout>
-    <Hello word={t('common:word')} />
+    {t('about:about')}
   </Layout>
 )
 
-Index.propTypes = {
+About.propTypes = {
   t: PropTypes.func.isRequired,
 }
 
-export default withI18next(['common'])(Index)
+export default withI18next(['common', 'about'])(About)
