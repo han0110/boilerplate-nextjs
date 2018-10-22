@@ -1,17 +1,14 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 
-import withI18next from '../hoc/withI18next'
-import Layout from '../layouts'
+import Layout from '../layouts/Layout'
+import Nav from '../components/Nav'
+import Introduction from '../components/Introduction'
 
-const About = ({ t }) => (
+const About = () => (
   <Layout>
-    {t('about:about')}
+    <Nav />
+    <Introduction />
   </Layout>
 )
 
-About.propTypes = {
-  t: PropTypes.func.isRequired,
-}
-
-export default withI18next(['common', 'about'])(About)
+export default About

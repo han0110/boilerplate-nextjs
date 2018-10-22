@@ -17,6 +17,7 @@
   "license": "MIT",
   "dependencies": {
     "@zeit/next-sass": "^1.0.1",
+    "autoprefixer": "^9.1.5",
     "axios": "^0.18.0",
     "dotenv": "^6.0.0",
     "file-loader": "^2.0.0",
@@ -40,6 +41,10 @@
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "react-i18next": "^8.0.7",
+    "react-redux": "^5.0.7",
+    "redux": "^4.0.0",
+    "redux-form": "^7.4.2",
+    "redux-saga": "^0.16.1",
     "sequelize": "^4.39.0",
     "sequelize-cli": "^4.1.1",
     "url-loader": "^1.1.1",

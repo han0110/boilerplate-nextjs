@@ -1,0 +1,11 @@
+@import '../styles/mixins/index';
+
+.container {
+  @include flex(column, center);
+  width: 100vw;
+  min-height: 100vh;
+}
+
+.children {
+  @include flex(column);
+}

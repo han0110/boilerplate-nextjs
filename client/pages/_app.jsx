@@ -1,6 +1,13 @@
 import App, { Container } from 'next/app'
 import Head from 'next/head'
 import React from 'react'
+import { Provider } from "react-redux"
+import { I18nextProvider } from 'react-i18next'
+
+import withRedux from '../hoc/withRedux'
+import withI18n from '../hoc/withI18n'
+
+import '../styles/style.scss'
 
 class MyApp extends App {
   static async getInitialProps({ Component, ctx }) {
@@ -14,16 +21,21 @@ class MyApp extends App {
   }
 
   render() {
-    const { Component, pageProps } = this.props
+    const { Component, pageProps, store, i18n, i18nProps } = this.props
+
     return (
       <Container>
         <Head>
-          <title>NEXT</title>
+          <title>NEXT.js</title>
         </Head>
-        <Component {...pageProps} />
+        <Provider store={store}>
+          <I18nextProvider {...i18nProps} i18n={i18n}>
+            <Component {...pageProps} />
+          </I18nextProvider>
+        </Provider>
       </Container>
     )
   }
 }
 
-export default MyApp
+export default withRedux(withI18n(MyApp))

@@ -8,7 +8,7 @@ const config = {
     defaultNS: 'common',
     fallbackLng: 'zh',
     load: 'languageOnly',
-    ns: ['common', 'about'],
+    ns: ['common', 'about', 'home'],
   }
 }
 

@@ -1,3 +1,12 @@
 {
-  "word": "你好"
+  "nav": {
+    "home": "首頁",
+    "about": "關於",
+    "login": "登入",
+    "signup": "註冊",
+    "lng": {
+      "title": "English",
+      "symbol": "en"
+    }
+  }
 }

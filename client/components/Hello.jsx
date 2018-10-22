@@ -1,28 +1,21 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { withNamespaces } from 'react-i18next'
 import PropTypes from 'prop-types'
 
-import { Link } from '../../shared/routes'
+import style from './Hello.scss'
 
-const Hello = ({ word }) => (
-  <div>
-    <Link route="/">
-      <a>/</a>
-    </Link>
-    <Link route="/en">
-      <a>/en</a>
-    </Link>
-    <Link route="/about">
-      <a>/about</a>
-    </Link>
-    <Link route="/en/about">
-      <a>/en/about</a>
-    </Link>
-    <h1>{word}</h1>
+const Hello = ({ t, user }) => (
+  <div className={style.container}>
+    <h3>{t('home:greet')} {user.name}</h3>
   </div>
 )
 
 Hello.propTypes = {
-  word: PropTypes.string.isRequired,
+  t: PropTypes.func.isRequired,
+  user: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+  }).isRequired,
 }
 
-export default Hello
+export default connect(store => ({ user: store.user }))(withNamespaces('home', { wait: true })(Hello))

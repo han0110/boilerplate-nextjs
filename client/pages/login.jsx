@@ -2,13 +2,12 @@ import React from 'react'
 
 import Layout from '../layouts/Layout'
 import Nav from '../components/Nav'
-import Hello from '../components/Hello'
 
-const Index = () => (
+const Login = () => (
   <Layout>
     <Nav />
-    <Hello />
+    <h4>Log in</h4>
   </Layout>
 )
 
-export default Index
+export default Login
