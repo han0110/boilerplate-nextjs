@@ -3,11 +3,10 @@ import React from 'react'
 import Layout from '../layouts/Layout'
 import Nav from '../components/Nav'
 
-const Login = () => (
+const About = () => (
   <Layout>
     <Nav />
-    <h4>Log in</h4>
   </Layout>
 )
 
-export default Login
+export default About

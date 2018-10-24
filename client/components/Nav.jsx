@@ -7,14 +7,14 @@ import { Link } from '../../shared/routes'
 
 import style from './Nav.scss'
 
-const Nav = ({ lng, t }) => {
+const Nav = ({ t }) => {
   const links = [
     { route: '/', text: t('common:nav.home') },
-    { route: '/about', text: t('common:nav.about') },
-    { route: '/login', text: t('common:nav.login') },
-    { route: '/signup', text: t('common:nav.signup') },
-    { route: `/${lng === 'zh' ? 'en' : ''}`, text: t('common:nav.lng.title') },
+    { route: '/page1', text: t('common:nav.page1') },
+    { route: '/page2', text: t('common:nav.page2') },
   ]
+
+  // TODO: Add language handler to set language in cookie
 
   return (
     <div className={style.container}>
@@ -34,7 +34,6 @@ const Nav = ({ lng, t }) => {
 }
 
 Nav.propTypes = {
-  lng: PropTypes.string.isRequired,
   t: PropTypes.func.isRequired,
 }
 

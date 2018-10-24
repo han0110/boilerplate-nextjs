@@ -1,12 +1,7 @@
 {
   "nav": {
     "home": "Home",
-    "about": "About",
-    "login": "Log in",
-    "signup": "Sign up",
-    "lng": {
-      "title": "中文",
-      "symbol": "zh"
-    }
+    "page1": "Page1",
+    "page2": "Page2"
   }
 }
