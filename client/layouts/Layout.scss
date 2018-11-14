@@ -1,11 +1,12 @@
 @import '../styles/mixins/index';
 
 .container {
-  @include flex(column, center);
+  @include flex(column, stretch);
   width: 100vw;
   min-height: 100vh;
 }
 
 .children {
-  @include flex(column);
+  @include flex(column, stretch);
+  flex: 1;
 }

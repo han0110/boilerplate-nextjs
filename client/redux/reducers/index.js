@@ -1,11 +1,5 @@
 import { combineReducers } from 'redux'
 
-import user from './user'
-import form from './form'
-
-const reducers = combineReducers({
-  user,
-  form,
-})
+const reducers = combineReducers({})
 
 export default reducers

@@ -1,4 +1,3 @@
-const onFinished = require('on-finished')
 const { response } = require('./winston')
 
 const logger = () => async (ctx, next) => {
@@ -13,21 +12,18 @@ const logger = () => async (ctx, next) => {
     await next()
   } catch (e) {
     error = true
-    ctx.status = e.status || 400
+    ctx.status = (e.response && e.response.status) || 400
     ctx.log = { message: e.message }
   } finally {
-    onFinished(
-      ctx.response,
-      response.bind(null, {
-        timestamp,
-        method: ctx.method,
-        url: ctx.url,
-        status: ctx.status,
-        log: ctx.log,
-        duration: new Date().getTime() - startTime,
-        error,
-      }),
-    )
+    response({
+      timestamp,
+      method: ctx.method,
+      url: ctx.url,
+      status: ctx.status,
+      log: ctx.log,
+      duration: new Date().getTime() - startTime,
+      error,
+    })
   }
 }
 

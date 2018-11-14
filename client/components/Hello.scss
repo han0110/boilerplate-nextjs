@@ -1,9 +1,6 @@
 @import '../styles/mixins/index';
 
 .container {
-  @include flex(column, center, center);
-  width: 100vw;
-  height: 100vh;
-  padding-top: 100px;
-  background-color: #f0f0f0;
+  @include flex(row, center, center);
+  flex: 1;
 }

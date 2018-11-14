@@ -19,5 +19,6 @@ module.exports = {
     semi: ['error', 'never'],
     'prefer-destructuring': 0,
     'jsx-a11y/anchor-is-valid': 0,
+    'react/destructuring-assignment': 0,
   },
 }

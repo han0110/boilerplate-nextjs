@@ -4,7 +4,7 @@ import initStore from '../redux/store'
 
 const NEXT_REDUX_STORE = '__NEXT_REDUX_STORE__'
 
-const getStore = initialState => {
+const getStore = (initialState = {}) => {
   if (!process.browser) return initStore(initialState)
 
   if (!window[NEXT_REDUX_STORE]) {
@@ -15,14 +15,14 @@ const getStore = initialState => {
 }
 
 const withRedux = App =>
-  class WrappedApp extends Component {
+  class WithRedux extends Component {
     static getInitialProps = async appCtx => {
+      const store = getStore()
+      appCtx.ctx.store = store // eslint-disable-line no-param-reassign
+
       const initialProps = App.getInitialProps
         ? await App.getInitialProps(appCtx)
         : {}
-
-      const store = getStore()
-      appCtx.ctx.store = store // eslint-disable-line no-param-reassign
 
       return {
         store,
@@ -33,7 +33,9 @@ const withRedux = App =>
 
     constructor(props) {
       super(props)
-      this.store = getStore(props.initialState)
+      this.store = !process.browser
+        ? this.props.store
+        : getStore(props.initialState)
     }
 
     render() {
