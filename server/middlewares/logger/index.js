@@ -12,7 +12,8 @@ const logger = () => async (ctx, next) => {
     await next()
   } catch (e) {
     error = true
-    ctx.status = (e.response && e.response.status) || 400
+    ctx.status = e.status || 400
+    ctx.body = e.message
     ctx.log = { message: e.message }
   } finally {
     response({
