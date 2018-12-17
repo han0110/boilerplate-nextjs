@@ -1,8 +1,18 @@
 import axios from 'axios'
 
+if (process.env.NODE_ENV === 'development') {
+  process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0'
+}
+
 class API {
-  constructor(baseUrl = '') {
-    this.baseUrl = baseUrl
+  constructor() {
+    this.baseUrl = process.browser ? '' : process.env.IP
+  }
+
+  use(endpoints = []) {
+    for (let i = 0, l = endpoints.length; i < l; i += 1) {
+      this.createEndpoint(endpoints[i])
+    }
   }
 
   createEndpoint({ name, method, url }) {
@@ -28,16 +38,12 @@ class API {
       return axios({
         method,
         url: `${options.baseUrl || this.baseUrl}${parsedUrl}`,
-        ...options
+        ...options,
       })
-    }
-  }
-
-  use(endpoints = []) {
-    for (let i = 0, l = endpoints.length; i < l; i += 1) {
-      this.createEndpoint(endpoints[i])
     }
   }
 }
 
-export default API
+const api = new API()
+
+export default api
