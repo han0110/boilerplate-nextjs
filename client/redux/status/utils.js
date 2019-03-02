@@ -9,7 +9,7 @@ export const getStatus = (type) => {
 
   if (![REQUEST, SUCCESS, FAILURE].includes(ret)) {
     // eslint-disable-next-line no-console
-    console.warn(`Reducer \`fetching\`: type ${type} is invalid`)
+    console.error(`error: redux action type '${type}' is invalid`)
   }
 
   return ret

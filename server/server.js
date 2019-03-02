@@ -10,11 +10,13 @@ const n = require('./apps/render/next')
 const db = require('../db')
 // Middlewares
 const logger = require('./middlewares/logger')
-// Config
+// Configs
 const config = require('./config')
 
 const app = new Koa()
-const httpServer = http.createServer(app.callback())
+
+// Uncomment this when using reverse proxy
+// app.proxy = true
 
 const prepare = async () => {
   await n.prepare()
@@ -28,6 +30,7 @@ const prepare = async () => {
 
 const bootstrap = async () => {
   await prepare()
+  const httpServer = http.createServer(app.callback())
 
   return httpServer.listen(config.port, () => {
     // eslint-disable-next-line no-console
@@ -35,4 +38,4 @@ const bootstrap = async () => {
   })
 }
 
-module.exports = { prepare, bootstrap }
+module.exports = { bootstrap }

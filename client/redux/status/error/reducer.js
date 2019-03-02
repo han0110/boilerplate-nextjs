@@ -1,4 +1,9 @@
-import { REQUEST, FAILURE, getType, getStatus } from './utils'
+import {
+  REQUEST,
+  FAILURE,
+  getType,
+  getStatus,
+} from '../utils'
 
 const initialState = {}
 

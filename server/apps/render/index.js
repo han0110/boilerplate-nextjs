@@ -1,7 +1,7 @@
 const Koa = require('koa')
 
 const n = require('./next')
-const routes = require('../../../shared/routes')
+const routes = require('./routes')
 
 const app = new Koa()
 const handle = routes.getRequestHandler(n)

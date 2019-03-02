@@ -1,4 +1,10 @@
-import { REQUEST, SUCCESS, FAILURE, getType, getStatus } from './utils'
+import {
+  REQUEST,
+  SUCCESS,
+  FAILURE,
+  getType,
+  getStatus,
+} from '../utils'
 
 const initialState = {}
 
@@ -12,7 +18,6 @@ const fetching = (state = initialState, action) => {
     case SUCCESS:
     case FAILURE:
       return { ...state, [type]: false }
-    // DEFAULT
     default:
       return state
   }

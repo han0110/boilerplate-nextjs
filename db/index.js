@@ -6,9 +6,10 @@ const config = require('./config/config')
 const getAllFiles = dir =>
   readdirSync(dir).reduce((files, file) => {
     const name = join(dir, file)
+    // eslint-disable-next-line no-nested-ternary
     return statSync(name).isDirectory()
       ? [...files, ...getAllFiles(name)]
-      : [...files, name]
+      : name.split('.')[1] === 'js' ? [...files, name] : files
   }, [])
 
 class DB {
@@ -24,7 +25,10 @@ class DB {
           dialect: config.dialect,
           timezone: '+08:00',
           operatorsAliases: false,
-          define: { freezeTableName: true },
+          define: {
+            freezeTableName: true,
+            paranoid: false,
+          },
           logging: false,
         },
       )
@@ -45,11 +49,6 @@ class DB {
     } catch (e) {
       throw e
     }
-  }
-
-  attach(app) {
-    // eslint-disable-next-line no-param-reassign
-    app.context.db = this
   }
 }
 
