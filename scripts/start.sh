@@ -40,6 +40,6 @@ fi
 docker-compose build
 
 # 4. Start services
-docker-compose up
+docker-compose up -d
 
 exit 0
