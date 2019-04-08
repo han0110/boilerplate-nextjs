@@ -2,22 +2,24 @@
 node_modules
 
 # Environment
-.env
+.env*
+!.env.default
 
 # OSX
 .DS_Store
 
-# App packaged
+# Build
 build
 
 # Compiled binary addons
 .eslintcache
 
-# vscode
+# Vscode
 .vscode
 
-# log
+# Log
 *.log
 
-# lock
-*.lock
+# Lock
+yarn.lock
+package-lock.json

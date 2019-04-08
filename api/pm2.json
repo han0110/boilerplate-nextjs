@@ -1,0 +1,13 @@
+{
+  "name": "api",
+  "script": "server/index.js",
+  "error_file": "/var/log/api/error.log",
+  "out_file": "/var/log/api/out.log",
+  "merge_logs": true,
+  "env": {
+    "NODE_ENV": "development"
+  },
+  "env_production": {
+    "NODE_ENV": "production"
+  }
+}

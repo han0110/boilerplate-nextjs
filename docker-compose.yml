@@ -1,0 +1,47 @@
+version: '3'
+services:
+  postgres:
+    image: postgres:11.2
+    restart: always
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./postgres/data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: production
+      POSTGRES_USER: production
+      POSTGRES_PASSWORD: production
+    networks:
+      - services
+
+  api:
+    build: api
+    container_name: ${API_VIRTUAL_HOST:-api.your.domain}
+    restart: always
+    environment:
+      - VIRTUAL_HOST=${API_VIRTUAL_HOST:-api.your.domain}
+      - VIRTUAL_PORT=${API_VIRTUAL_PORT:-3000}
+      - LETSENCRYPT_EMAIL=${LETSENCRYPT_EMAIL:-example@your.domain}
+      - LETSENCRYPT_HOST=${LETSENCRYPT_HOST:-your.domain}
+    networks:
+      - services
+    depends_on:
+      - postgres
+    links:
+      - postgres:postgres
+
+  frontend:
+    build: frontend
+    container_name: ${FRONTEND_VIRTUAL_HOST:-your.domain}
+    restart: always
+    environment:
+      - VIRTUAL_HOST=${FRONTEND_VIRTUAL_HOST:-your.domain}
+      - VIRTUAL_PORT=${FRONTEND_VIRTUAL_PORT:-3000}
+      - LETSENCRYPT_EMAIL=${LETSENCRYPT_EMAIL:-example@your.domain}
+      - LETSENCRYPT_HOST=${LETSENCRYPT_HOST:-your.domain}
+    networks:
+      - services
+
+networks:
+  services:
+    external: true

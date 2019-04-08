@@ -1,0 +1,13 @@
+{
+  "name": "frontend",
+  "script": "server/index.js",
+  "error_file": "/var/log/frontend/error.log",
+  "out_file": "/var/log/frontend/out.log",
+  "merge_logs": true,
+  "env": {
+    "NODE_ENV": "development"
+  },
+  "env_production": {
+    "NODE_ENV": "production"
+  }
+}
