@@ -12,12 +12,21 @@ const Index = ({ message }) => (
 )
 
 Index.getInitialProps = async () => {
-  const { data: message } = await axios.post('http://api.localhost/v1/echo', {
-    data: {
+  let endpoint
+  if (process.browser) {
+    endpoint = 'https://api.localhost/v1/echos'
+  } else {
+    endpoint = 'http://api:3000/v1/echo'
+  }
+
+  try {
+    const { data: { message } } = await axios.post(endpoint, {
       message: 'Hello world',
-    }
-  })
-  return { message }
+    })
+    return { message }
+  } catch (err) {
+    return { message: err.message }
+  }
 }
 
 Index.propTypes = {

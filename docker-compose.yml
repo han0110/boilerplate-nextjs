@@ -1,7 +1,9 @@
 version: '3'
+
 services:
   postgres:
     image: postgres:11.2
+    container_name: postgres.your.domain
     restart: always
     ports:
       - "5432:5432"
@@ -14,15 +16,31 @@ services:
     networks:
       - services
 
+  migration:
+    image: ${API_VIRTUAL_HOST:-api.your.domain}
+    container_name: migration.postgres.your.domain
+    working_dir: /api
+    command: ["npm", "run", "sequelize", "db:migrate"]
+    environment:
+      - NODE_ENV=production
+    env_file: ./api/.env
+    networks:
+      - services
+    depends_on:
+      - postgres
+    links:
+      - postgres:postgres
+
   api:
-    build: api
+    image: ${API_VIRTUAL_HOST:-api.your.domain}
     container_name: ${API_VIRTUAL_HOST:-api.your.domain}
     restart: always
     environment:
       - VIRTUAL_HOST=${API_VIRTUAL_HOST:-api.your.domain}
       - VIRTUAL_PORT=${API_VIRTUAL_PORT:-3000}
+      - LETSENCRYPT_HOST=${API_LETSENCRYPT_HOST:-your.domain}
       - LETSENCRYPT_EMAIL=${LETSENCRYPT_EMAIL:-example@your.domain}
-      - LETSENCRYPT_HOST=${LETSENCRYPT_HOST:-your.domain}
+    env_file: ./api/.env
     networks:
       - services
     depends_on:
@@ -31,16 +49,20 @@ services:
       - postgres:postgres
 
   frontend:
-    build: frontend
+    image: ${FRONTEND_VIRTUAL_HOST:-your.domain}
     container_name: ${FRONTEND_VIRTUAL_HOST:-your.domain}
     restart: always
     environment:
       - VIRTUAL_HOST=${FRONTEND_VIRTUAL_HOST:-your.domain}
       - VIRTUAL_PORT=${FRONTEND_VIRTUAL_PORT:-3000}
+      - LETSENCRYPT_HOST=${FRONTEND_LETSENCRYPT_HOST:-your.domain}
       - LETSENCRYPT_EMAIL=${LETSENCRYPT_EMAIL:-example@your.domain}
-      - LETSENCRYPT_HOST=${LETSENCRYPT_HOST:-your.domain}
     networks:
       - services
+    depends_on:
+      - api
+    links:
+      - api:api
 
 networks:
   services:

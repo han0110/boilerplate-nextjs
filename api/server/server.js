@@ -21,8 +21,7 @@ const prepare = async () => {
 
   app.use(logger())
   app.use(cors({
-    origin: 'http://localhost',
-    allowMethods: ['GET', 'POST'],
+    origin: config.allowOrigin,
   }))
   app.use(bodyParser())
   app.use(v1.routes())

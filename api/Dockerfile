@@ -1,11 +1,21 @@
-FROM keymetrics/pm2:latest-alpine
+# Dependencies stage
+FROM node:10 AS deps
 
-COPY server /server
-COPY db /db
-COPY package.json pm2.json .env ./
+WORKDIR /api
 
-RUN npm install --production
+COPY ./package.json /api/package.json
+COPY ./package-lock.json /api/package-lock.json
+
+RUN npm i --production
+
+# Final stage
+FROM node:10-alpine
+
+WORKDIR /api
+
+COPY --from=deps /api/node_modules /api/node_modules
+COPY . /api
 
 EXPOSE 3000
 
-CMD ["pm2-runtime", "start", "pm2.json", "--env", "production"]
+CMD ["npm", "run", "start"]

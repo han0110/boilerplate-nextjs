@@ -5,19 +5,23 @@
   "scripts": {
     "dev": "NODE_ENV=development node server",
     "start": "NODE_ENV=production node server",
+    "sequelize": "cd db && sequelize",
     "lint": "eslint --cache ."
   },
   "author": "Han Jian",
   "license": "MIT",
   "dependencies": {
-    "@koa/cors": "2",
+    "@koa/cors": "^2.2.3",
+    "chalk": "^2.4.2",
     "dotenv": "^6.2.0",
     "koa": "^2.7.0",
     "koa-bodyparser": "^4.2.1",
     "koa-router": "^7.4.0",
-    "pg": "^7.8.1",
-    "sequelize": "^4.42.1",
+    "on-finished": "^2.3.0",
+    "pg": "^7.9.0",
+    "sequelize": "^4.43.2",
     "sequelize-cli": "^5.4.0",
+    "serialize-error": "^4.1.0",
     "winston": "^3.2.1"
   },
   "devDependencies": {

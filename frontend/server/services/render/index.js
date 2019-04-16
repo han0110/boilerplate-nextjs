@@ -8,8 +8,6 @@ const handler = () => {
   const handle = routes.getRequestHandler(n)
 
   return async ctx => {
-    ctx.url = `${ctx.mountPath || ''}${ctx.url}`
-
     ctx.res.statusCode = 200
     ctx.respond = false
     await handle(ctx.req, ctx.res)

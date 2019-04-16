@@ -1,12 +1,13 @@
 import axios from 'axios'
 
-if (process.env.NODE_ENV === 'development') {
-  process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0'
-}
-
 class API {
   constructor() {
-    this.baseUrl = 'api.localhost'
+    if (!process.browser && process.env.NODE_ENV === 'production') {
+      this.baseUrl = 'http://api:3000'
+    } else {
+      this.baseUrl = 'https://api.your.domain'
+    }
+    // this.baseUrl = 'http://localhost:3001'
   }
 
   use(endpoints = []) {
